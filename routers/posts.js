@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const posts = require("../data/posts");
+const posts = require('../data');
 
 // (Index) Restituisce l’intera lista di post insieme al conteggio totale. È utile per ottenere una panoramica generale
 router.get('/',(req,res)=>{
@@ -9,6 +9,7 @@ router.get('/',(req,res)=>{
         count:posts.length
     });
 }); 
+
 // (Show) Cerca un post specifico in base all’ID passato come parametro. Se trova il post, restituisce i dettagli e un’anteprima dell’immagine; altrimenti, restituisce un messaggio di errore Post non trovato
 router.get('/:id', (req,res)=>{
     const post = posts.find(p => p.id == req.params.id);
